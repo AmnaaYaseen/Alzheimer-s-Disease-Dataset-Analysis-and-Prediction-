@@ -112,6 +112,11 @@ After training the model, we evaluate its performance using:
 
 The model's accuracy is displayed on the web app, and users can evaluate its performance.
 
+## Demo Video
+
+Click here to watch the demo video (https://www.linkedin.com/posts/amna-yaseen-668242632104455487_datascience-machinelearning-alzheimersprediction-activity-7282565514055307264-GFhd?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEG7gb4BpMMFhZMbWK6xsHuMPApLT98cIBE)
+
+
 ## Contributing
 
 If you would like to contribute to this project, feel free to fork the repository and submit a pull request. You can also open issues for any bugs or feature requests.
