@@ -114,7 +114,7 @@ The model's accuracy is displayed on the web app, and users can evaluate its per
 
 ## Demo Video
 
-Click here to watch the demo video (https://www.linkedin.com/posts/amna-yaseen-668242632104455487_datascience-machinelearning-alzheimersprediction-activity-7282565514055307264-GFhd?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEG7gb4BpMMFhZMbWK6xsHuMPApLT98cIBE)
+[Click here to watch the demo video](https://www.linkedin.com/posts/amna-yaseen-668242632104455487_datascience-machinelearning-alzheimersprediction-activity-7282565514055307264-GFhd?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEG7gb4BpMMFhZMbWK6xsHuMPApLT98cIBE)
 
 
 ## Contributing
