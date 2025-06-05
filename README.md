@@ -3,9 +3,6 @@
 
 This project predicts whether a patient has Alzheimer's Disease based on various health metrics and behavioral symptoms using machine learning techniques, specifically the Random Forest Classifier. It also includes an interactive web interface built with Streamlit for data exploration and prediction.
 
-![Streamlit App](https://img.shields.io/badge/Streamlit-App-red) 
-[![Dataset from Kaggle](https://img.shields.io/badge/Dataset-Kaggle-blue)](https://www.kaggle.com/datasets/rabieelkharoua/alzheimers-disease-dataset)
-
 ---
 
 ## 📑 Table of Contents
