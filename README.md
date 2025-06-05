@@ -1,122 +1,195 @@
-# Alzheimer's Disease Prediction using Random Forest
 
-This project predicts whether a patient has Alzheimer's Disease based on various health metrics and behavioral symptoms using machine learning techniques, 
-specifically the Random Forest Classifier. It also provides an interactive web interface using Streamlit for data exploration and prediction.
+# 🧠 Alzheimer's Disease Prediction using Random Forest
 
-## Table of Contents
+This project predicts whether a patient has Alzheimer's Disease based on various health metrics and behavioral symptoms using machine learning techniques, specifically the Random Forest Classifier. It also includes an interactive web interface built with Streamlit for data exploration and prediction.
 
-- [Project Overview](#project-overview)
-- [Dataset](#dataset)
-- [Dependencies](#dependencies)
-- [Setup and Installation](#setup-and-installation)
-- [Features](#features)
-- [Usage](#usage)
-- [Model Evaluation](#model-evaluation)
-- [Contributing](#contributing)
+![Streamlit App](https://img.shields.io/badge/Streamlit-App-red) 
+[![Dataset from Kaggle](https://img.shields.io/badge/Dataset-Kaggle-blue)](https://www.kaggle.com/datasets/rabieelkharoua/alzheimers-disease-dataset)
+
+---
+
+## 📑 Table of Contents
+
+- [Project Overview](#project-overview)  
+- [Dataset](#dataset)  
+- [Data Processing](#data-processing)  
+- [Dependencies](#dependencies)  
+- [Setup and Installation](#setup-and-installation)  
+- [Features](#features)  
+- [Usage](#usage)  
+- [Model Evaluation](#model-evaluation)  
+- [Demo Video](#demo-video)  
+- [Contributing](#contributing)  
 - [License](#license)
 
-## Project Overview
+---
 
-This project involves building a classification model to predict whether a person has Alzheimer's Disease (AD) based on various health metrics. 
-The dataset includes several columns such as Age, Gender, BMI, and numerous health factors, including symptoms like Memory Complaints, Behavioral Problems, and more.
+## 🔍 Project Overview
 
-The model is built using the Random Forest algorithm, which is trained on a balanced dataset where the minority class is undersampled. After training, 
-the model's performance is evaluated using accuracy, confusion matrix, and classification report.
+This project builds a machine learning model to predict the likelihood of Alzheimer's Disease (AD) based on clinical and behavioral data. The Random Forest algorithm is used as the core classifier, and the dataset is preprocessed with techniques like:
 
-Additionally, the project features an interactive web application developed with Streamlit that allows users to perform Exploratory Data Analysis (EDA), 
-view model results, and input custom data for prediction.
+- Dropping irrelevant columns (PatientID, DoctorInCharge)
 
-## Dataset
+- Handling missing values by imputing column means
 
-The dataset used in this project contains 2,149 rows of data collected from patients. It includes the following key features:
+- Balancing the dataset through undersampling the majority class
 
-- **Age**: Age of the patient
-- **Gender**: Gender of the patient (male/female)
-- **BMI**: Body Mass Index
-- **AlcoholConsumption**: Weekly alcohol consumption (units)
-- **PhysicalActivity**: Physical activity level (1 to 10 scale)
-- **DietQuality**: Diet quality (1 to 10 scale)
-- **MMSE**: Mini-Mental State Examination score (1 to 30 scale)
-- **Family History of Alzheimer's**: Whether the patient has a family history of Alzheimer's (yes/no)
-- **Symptoms**: Includes symptoms like Memory Complaints, Behavioral Problems, and more
-- **Diagnosis**: The target column (0: No Alzheimer's, 1: Alzheimer's)
+The model’s performance is evaluated using accuracy, a confusion matrix, and a classification report. An interactive Streamlit web app is included, allowing users to perform EDA, check feature importance, analyze distributions, and make real-time predictions.
 
-The dataset is assumed to be clean, and missing values are imputed with the mean of the respective columns.
 
-## Dependencies
+---
 
-- **pandas**: Data manipulation and analysis
-- **numpy**: Numerical computing
-- **seaborn**: Statistical data visualization
-- **matplotlib**: Plotting and graphing
-- **scikit-learn**: Machine learning algorithms and tools
-- **streamlit**: Building the interactive web application
+## 📊 Dataset
 
-Install the required dependencies by running the following command:
+The dataset used in this project is sourced from Kaggle:  
+👉 [Alzheimer’s Disease Dataset on Kaggle](https://www.kaggle.com/datasets/rabieelkharoua/alzheimers-disease-dataset/data)
+
+- **Rows:** 2,149
+
+- **Columns include:**
+  - `Age`
+  - `Gender`
+  - `BMI`
+  - `AlcoholConsumption`
+  - `PhysicalActivity`
+  - `DietQuality`
+  - `MMSE` (Mini-Mental State Examination Score)
+  - `Family History of Alzheimer's`
+  - `Symptoms` (Memory Complaints, Behavioral Problems, etc.)
+  - `Diagnosis` (Target: 0 = No Alzheimer’s, 1 = Alzheimer’s)
+
+**Note:** The dataset is assumed to be mostly clean. Missing numerical values are filled using column means.
+
+---
+
+## ⚙️ Data Processing
+
+- Dropped irrelevant columns: `PatientID`, `DoctorInCharge`
+- Imputed missing values with column-wise mean
+- Converted target labels in `Diagnosis` to binary (0 and 1)
+- Addressed class imbalance using **undersampling** of the majority class
+- Split data into training and testing sets (80/20)
+- Trained a `RandomForestClassifier` with:
+  - `n_estimators=100`
+  - `max_depth=10`
+  - `min_samples_split=10`
+  - `random_state=42`
+
+---
+
+## 📦 Dependencies
+
+Install all required Python packages using pip:
 
 ```bash
 pip install pandas numpy seaborn matplotlib scikit-learn streamlit
 ```
 
-## Setup and Installation
+**Required Python Libraries:**
 
-1. Clone the repository to your local machine:
+- pandas, numpy – Data handling
 
-    ```bash
-    git clone https://github.com/yourusername/alzheimers-disease-prediction.git
-    ```
+- matplotlib, seaborn – Visualization
 
-2. Change directory to the project folder:
+- scikit-learn – Machine learning
 
-    ```bash
-    cd alzheimers-disease-prediction
-    ```
-
-3. Install the required dependencies (if you haven't already):
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. Run the Streamlit app:
-
-    ```bash
-    streamlit run app.py
-    ```
-
-The application will open in your default web browser.
-
-## Features
-
-- **Exploratory Data Analysis (EDA)**: View summary statistics, visualizations, and missing value analysis.
-- **Model Evaluation**: View accuracy, confusion matrix, and classification report of the trained model.
-- **Interactive Prediction**: Enter personal health data through a form and receive predictions on whether you have Alzheimer's Disease.
-  
-## Usage
-
-1. Launch the Streamlit app as described above.
-2. Navigate through the sections:
-   - **Introduction**: Learn about the project.
-   - **EDA**: Explore data visualizations and summary statistics.
-   - **Model**: View model evaluation metrics and make predictions.
-   - **Conclusion**: See a summary of the results and model performance.
-3. For prediction, input numerical and categorical data (e.g., Age, BMI, Smoking status) to receive a prediction of whether the person has Alzheimer's Disease or not.
-
-## Model Evaluation
-
-After training the model, we evaluate its performance using:
-
-- **Accuracy**: The proportion of correct predictions made by the model.
-- **Confusion Matrix**: A matrix that shows the classification results, highlighting true positives, false positives, true negatives, and false negatives.
-- **Classification Report**: Precision, recall, F1-score, and support for each class (Alzheimer's vs No Alzheimer's).
-
-The model's accuracy is displayed on the web app, and users can evaluate its performance.
-
-## Demo Video
-
-[Click here to watch the demo video](https://www.linkedin.com/posts/amna-yaseen-668242632104455487_datascience-machinelearning-alzheimersprediction-activity-7282565514055307264-GFhd?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEG7gb4BpMMFhZMbWK6xsHuMPApLT98cIBE)
+- streamlit – Web interface
 
 
-## Contributing
+---
 
-If you would like to contribute to this project, feel free to fork the repository and submit a pull request. You can also open issues for any bugs or feature requests.
+## 💻 Setup and Installation
+
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/yourusername/alzheimers-disease-prediction.git
+cd alzheimers-disease-prediction
+```
+
+2. **Install dependencies:**
+
+```bash
+pip install -r requirements.txt
+```
+
+3. **Run the Streamlit App:**
+
+```bash
+streamlit run app.py
+```
+
+The app will launch in your default browser.
+
+---
+
+## 🌟 Features
+
+- **Exploratory Data Analysis (EDA):**
+  - Summary statistics
+  - Missing value heatmaps
+  - Histograms, boxplots, scatter plots
+  - Skewness and correlation analysis
+  - Outlier detection via IQR
+  - Feature importance from Random Forest
+
+- **Model Evaluation:**
+  - Accuracy, Confusion Matrix, Classification Report
+
+- **Interactive Prediction:**
+  - Input health metrics via Streamlit form
+  - Predict Alzheimer’s diagnosis instantly
+
+---
+
+## ▶️ Usage
+
+Once the app is running:
+
+- Navigate using the sidebar:
+  - `Introduction`
+  - `EDA` – Explore insights and visualizations
+  - `Model` – View prediction results
+  - `Conclusion`
+
+- In `Model` section, input features like Age, BMI, Physical Activity, etc., and receive prediction on whether the patient may have Alzheimer's.
+
+---
+
+## 📈 Model Evaluation
+
+The model's performance is evaluated using:
+
+- ✅ **Accuracy**
+- 📊 **Confusion Matrix**
+- 🧾 **Classification Report**: Precision, Recall, F1-score for both classes
+
+These are all displayed in the `Model` tab of the Streamlit app.
+
+---
+
+## 🎬 Demo Video
+
+📽️👉 [Click here to watch the demo video](https://www.linkedin.com/posts/amnaa-yaseen_datascience-machinelearning-alzheimersprediction-activity-7282565514055307264-Ivdk?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEG7gb4BpMMFhZMbWK6xsHuMPApLT98cIBE)
+
+
+---
+
+## 🤝 Contributing
+
+Want to improve the project or fix bugs?  
+1. Fork the repo  
+2. Create a feature branch  
+3. Submit a pull request
+
+Issues and suggestions are welcome!
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
+---
+
+> **Developed by [Amna Yaseen](https://www.linkedin.com/in/amnaa-yaseen) — BS Data Science**
